@@ -1,4 +1,5 @@
-import { Dot, LibraryBig } from "lucide-react";
+import { Dot } from "lucide-react";
+import NavLinks from "./nav-links";
 
 export default function Header() {
 	return (
@@ -8,14 +9,7 @@ export default function Header() {
 					<h1 className="text-xl font-bold">Digital</h1>
 					<Dot className="text-gray-500 font-bold" size={16} />
 					<p className="text-gray-500 font-semibold">Library</p>
-
-					<div className="ml-auto flex items-center space-x-4">
-						<div className="flex items-center cursor-pointer">
-							<LibraryBig size={20} className="mr-1" />
-							<p>Collection</p>
-						</div>
-						<div>User</div>
-					</div>
+					<NavLinks />
 				</div>
 			</div>
 		</header>
