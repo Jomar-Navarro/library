@@ -1,9 +1,13 @@
 import { Books } from "@/models/Books";
 
-export async function searchBooks(query: string): Promise<Books | null> {
+export async function searchBooks(
+	query: string,
+	page: number = 1,
+	perPage: number = 20,
+): Promise<Books | null> {
 	try {
 		const response = await fetch(
-			`https://gutendex.com/books?search=${encodeURIComponent(query)}`,
+			`/api/books?query=${encodeURIComponent(query)}&page=${page}`,
 		);
 
 		if (!response.ok) {

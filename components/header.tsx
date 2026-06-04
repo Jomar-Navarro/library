@@ -1,5 +1,5 @@
 import { Dot } from "lucide-react";
-import NavLinks from "./nav-links";
+import NavLinks from "./NavLinks";
 
 export default function Header() {
 	return (
