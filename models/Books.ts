@@ -12,6 +12,8 @@ export interface Result {
 	authors: Author[];
 	subjects: string[];
 	bookshelves: string[];
+	languages: string[];
+	summaries: string[];
 	formats: Formats;
 	download_count: number;
 	issued: Date;

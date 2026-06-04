@@ -24,3 +24,10 @@ body {
 	color: var(--foreground);
 	font-family: "Spectral", Georgia, "Times New Roman", serif;
 }
+
+.book-detail-layout {
+	display: grid;
+	grid-template-columns: 280px 1fr;
+	gap: 4rem;
+	align-items: start;
+}

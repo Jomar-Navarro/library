@@ -1,4 +1,4 @@
-import { Books } from "@/models/Books";
+import { Books, Result } from "@/models/Books";
 
 export async function searchBooks(
 	query: string,
@@ -19,4 +19,26 @@ export async function searchBooks(
 		console.error("Error fetching books:", error);
 		return null;
 	}
+}
+
+export async function fetchBookbyId(id: number): Promise<Result | null> {
+	try {
+		const response = await fetch(`/api/books/${id}`);
+
+		if (!response.ok) {
+			throw new Error(`HTTP error! status: ${response.status}`);
+		}
+		return await response.json();
+	} catch (error) {
+		console.error("Error fetching book:", error);
+		return null;
+	}
+}
+
+export async function getBook(id: string): Promise<Result | null> {
+	const response = await fetch(`https://gutendex.com/books/${id}`, {
+		next: { revalidate: 300 },
+	});
+	if (!response.ok) return null;
+	return response.json();
 }

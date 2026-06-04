@@ -15,9 +15,9 @@ export default function SearchBar({ query, onChange }: Props) {
 			/>
 			<input
 				value={query}
-				placeholder='Cerca "Frankenstein", "Austen", "adventure"...'
+				placeholder='Search "Frankenstein", "Austen", "adventure"...'
 				type="text"
-				className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-full text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 bg-white"
+				className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-full text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 bg-white"
 				onChange={(e) => onChange(e.target.value)}
 			/>
 		</div>

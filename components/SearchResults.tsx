@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { searchBooks } from "@/service/booksService";
 import { Books } from "@/models/Books";
 import BookCard from "@/components/BookCard";
+import Link from "next/link";
 import SearchBar from "@/components/SearchBar";
 
 export default function Search() {
@@ -72,28 +73,30 @@ export default function Search() {
 		<div>
 			<SearchBar query={query} onChange={setQuery} />
 
-			{loading && <p className="mt-8 text-gray-400">Caricamento...</p>}
+			{loading && <p className="mt-8 text-gray-400">Loading...</p>}
 
 			{error && <p className="mt-8 text-red-500">{error}</p>}
 
 			{!loading && !books && query.length < 3 && (
-				<p className="mt-12 text-gray-400">Cerca un libro per iniziare.</p>
+				<p className="mt-12 text-gray-400">Search a book to get started.</p>
 			)}
 
 			{!loading && books && books.results.length === 0 && (
 				<p className="mt-12 text-gray-400">
-					Nessun risultato per &ldquo;{query}&rdquo;.
+					No results for &ldquo;{query}&rdquo;.
 				</p>
 			)}
 
 			{!loading && books && books.results.length > 0 && (
 				<>
 					<p className="mt-8 mb-4 text-xs font-semibold uppercase tracking-widest text-gray-400">
-						{books.count} risultati
+						{books.count} results
 					</p>
 					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
 						{books.results.map((book) => (
-							<BookCard key={book.id} book={book} />
+							<Link key={book.id} href={`/book/${book.id}`}>
+								<BookCard book={book} />
+							</Link>
 						))}
 					</div>
 				</>
@@ -103,9 +106,9 @@ export default function Search() {
 				<div className="mt-8 flex justify-center">
 					<button
 						onClick={loadMore}
-						className="bg-red-400 cursor-pointer p-3 rounded-full"
+						className="bg-cyan-950 cursor-pointer p-3 rounded-full"
 					>
-						{loadingMore ? "Caricamento..." : "Carica altri risultati"}
+						{loadingMore ? "Loading..." : "Load more"}
 					</button>
 				</div>
 			)}

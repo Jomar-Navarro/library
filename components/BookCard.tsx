@@ -6,7 +6,13 @@ function getCoverColor(id: number) {
 	return COVER_COLORS[id % COVER_COLORS.length];
 }
 
-export default function BookCard({ book }: { book: Result }) {
+export default function BookCard({
+	book,
+	hideMeta,
+}: {
+	book: Result;
+	hideMeta?: boolean;
+}) {
 	const genre =
 		book.bookshelves?.[0]?.replace("Category: ", "") ||
 		book.subjects?.[0]?.split("--")[0].trim() ||
@@ -48,17 +54,19 @@ export default function BookCard({ book }: { book: Result }) {
 				</div>
 			</div>
 
-			<div>
-				<h3 className="text-sm font-semibold text-gray-900 leading-snug line-clamp-2">
-					{book.title}
-				</h3>
-				{author && (
-					<p className="text-xs text-gray-500 mt-0.5 truncate">{author}</p>
-				)}
-				{genre && (
-					<p className="text-xs text-gray-400 mt-1 truncate">{genre}</p>
-				)}
-			</div>
+			{!hideMeta && (
+				<div>
+					<h3 className="text-sm font-semibold text-gray-900 leading-snug line-clamp-2">
+						{book.title}
+					</h3>
+					{author && (
+						<p className="text-xs text-gray-500 mt-0.5 truncate">{author}</p>
+					)}
+					{genre && (
+						<p className="text-xs text-gray-400 mt-1 truncate">{genre}</p>
+					)}
+				</div>
+			)}
 		</div>
 	);
 }

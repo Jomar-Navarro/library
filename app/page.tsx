@@ -4,7 +4,7 @@ export default function Home() {
 	return (
 		<main className="container mx-auto px-4 py-12 text-center min-h-[calc(100vh-114px)]">
 			<p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-				Catalogo · Project Library App
+				Catalogue · Project Library App
 			</p>
 			<h1 className="text-5xl font-bold text-gray-900 leading-tight mb-4">
 				Find your next favorite book
