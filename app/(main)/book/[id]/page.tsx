@@ -9,7 +9,7 @@ export default async function BookPage({
 	const { id } = await params;
 	const book = await getBook(id);
 
-	if (!book) return <div className="p-12 text-center">Book not found.</div>;
+	if (!book) return <div className="p-12 text-center">Libro non trovato.</div>;
 
 	return <BookDetail book={book} />;
 }
